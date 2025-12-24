@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard | SkyCast</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar / Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-cloud-sun-rain"></i>
+                <span>SkyCast</span>
+            </div>
+
+            <!-- Search Section -->
+            <div class="search-box">
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="city-input" placeholder="Search city..." autocomplete="off">
+                </div>
+                <button id="search-btn" class="btn-primary">Search</button>
+                <button id="location-btn" class="btn-icon" title="Use My Location">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                </button>
+            </div>
+
+            <!-- Favorites List (To-Do Style) -->
+            <div class="favorites-section">
+                <h3><i class="fa-solid fa-star"></i> Favorites</h3>
+                <ul id="favorites-list" class="favorites-list">
+                    <!-- Favorite cities will be injected here -->
+                    <li class="empty-msg">No favorites added yet.</li>
+                </ul>
+            </div>
+            
+            <!-- Controls -->
+            <div class="controls">
+                <div class="toggle-container">
+                    <span>°C</span>
+                    <label class="switch">
+                        <input type="checkbox" id="unit-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <span>°F</span>
+                </div>
+                <button id="theme-toggle" class="btn-theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Loading Spinner -->
+            <div id="loader" class="loader hidden"></div>
+
+            <!-- Error Message -->
+            <div id="error-msg" class="error-banner hidden">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span id="error-text">City not found</span>
+                <button class="close-btn" onclick="this.parentElement.classList.add('hidden')">&times;</button>
+            </div>
+
+            <!-- Current Weather -->
+            <section class="current-weather" id="current-weather">
+                <div class="weather-header">
+                    <div>
+                        <h2 id="city-name">--</h2>
+                        <p id="date-time">--</p>
+                    </div>
+                    <button id="add-fav-btn" class="btn-fav" title="Add to Favorites">
+                        <i class="fa-regular fa-star"></i>
+                    </button>
+                </div>
+
+                <div class="weather-body">
+                    <div class="temp-container">
+                        <h1 id="temperature">--°</h1>
+                        <p id="condition">--</p>
+                    </div>
+                    <img id="weather-icon" src="" alt="Weather Icon" class="main-icon hidden">
+                </div>
+
+                <div class="weather-details">
+                    <div class="detail-card">
+                        <i class="fa-solid fa-droplet"></i>
+                        <div>
+                            <p>Humidity</p>
+                            <span id="humidity">--%</span>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <i class="fa-solid fa-wind"></i>
+                        <div>
+                            <p>Wind Speed</p>
+                            <span id="wind-speed">-- km/h</span>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <i class="fa-solid fa-temperature-three-quarters"></i>
+                        <div>
+                            <p>Feels Like</p>
+                            <span id="feels-like">--°</span>
+                        </div>
+                    </div>
+                    <div class="detail-card">
+                        <i class="fa-solid fa-eye"></i>
+                        <div>
+                            <p>Visibility</p>
+                            <span id="visibility">-- km</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5-Day Forecast -->
+            <section class="forecast-section">
+                <h3>5-Day Forecast</h3>
+                <div class="forecast-container" id="forecast-container">
+                    <!-- Forecast cards injected via JS -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
